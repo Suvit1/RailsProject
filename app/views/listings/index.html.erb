@@ -9,15 +9,18 @@
             <h3><%= listing.name %></h3>
             <% a = "₹"+listing.price.to_s %>
             <p><%= a %></p>
+            <% if user_signed_in? %>
             <%= link_to 'Show', listing , class: "btn btn-link" %>
             <%= link_to 'Edit', edit_listing_path(listing)  , class: "btn btn-link"%>
             <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-link"%>
+            <% end %>
           </div>
       </div>
-        <%= listing.description %><br>
+       
       </div>
       <% end %>
   </div>
 </div>
-
-<%= link_to 'New Listing', new_listing_path %>
+<% if user_signed_in? %>
+<%= link_to 'New Listing', new_listing_path , class: "btn btn-primary"%>
+<% end %>
